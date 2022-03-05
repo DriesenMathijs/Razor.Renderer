@@ -11,5 +11,5 @@ Registration with:
 ```csharp
 var services = new ServiceCollection();
 services.AddSingleton<IRazorRenderEngine, RazorRenderEngine>();
-services.AddRazorTemplating();  -- add to use @inject() in your templates
+services.AddRazorRenderer();  -- add to use @inject() in your templates
 ```

@@ -1,4 +1,4 @@
-# Razor Renderer 
+# Razor Renderer (.NET Core 3.1)
 We can put Razor Views in a seperate Razor Class Library to use these views as a template for emails, ... in other kinds of applications (Console, API's, WPF, Worker services,...)
 It supports the main View Features & MVC Razor View Features.
 
@@ -13,3 +13,5 @@ var services = new ServiceCollection();
 services.AddSingleton<IRazorRenderEngine, RazorRenderEngine>();
 services.AddRazorRenderer();  -- add to use @inject() in your templates
 ```
+
+

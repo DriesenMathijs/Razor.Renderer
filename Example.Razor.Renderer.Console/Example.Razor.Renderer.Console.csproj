@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Example.Razor.Renderer.Templates\Example.Razor.Renderer.Templates.csproj" />
+    <ProjectReference Include="..\Razor.Renderer.Core\Razor.Renderer.Core.csproj" />
+  </ItemGroup>
+
+</Project>

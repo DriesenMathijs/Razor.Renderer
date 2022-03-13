@@ -1,12 +1,9 @@
 ﻿using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Primitives;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Razor.Renderer.Core.Virtual
+namespace Razor.Renderer.Core.Setup
 {
-    public class VirtualFileProvider : IFileProvider
+    internal class VirtualFileProvider : IFileProvider
     {
         public IDirectoryContents GetDirectoryContents(string subpath) =>
             new VirtualDirectoryContents();
@@ -14,13 +11,11 @@ namespace Razor.Renderer.Core.Virtual
         public IFileInfo GetFileInfo(string subpath)
         {
             switch (subpath.ToLower())
-            {               
-                case "/views/_viewstart.cshtml":
-                    return VirtualDirectoryContents.ViewStart.Value;
-                case "/views/shared/_layout.cshtml":
+            {
+                case Constants.Layout:
                     return VirtualDirectoryContents.Layout.Value;
-                case "/views/templates/mailtemplate.cshtml":
-                    return VirtualDirectoryContents.Template.Value;
+                case Constants.MailTemplate:
+                    return VirtualDirectoryContents.MailTemplate.Value;
                 default:
                     return new NotFoundFileInfo(subpath);
             }

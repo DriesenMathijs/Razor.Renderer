@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace Razor.Renderer.Core.Virtual
+namespace Razor.Renderer.Core.Setup
 {
     public class VirtualFileInfo : IFileInfo
     {

@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Razor.Renderer.Temp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Razor.Renderer.Console", "Example.Razor.Renderer.Console\Example.Razor.Renderer.Console.csproj", "{458C176C-7276-40C4-8BFE-FDF116427895}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualProv.Razor.Renderer.Console", "VirtualProv.Razor.Renderer.Console\VirtualProv.Razor.Renderer.Console.csproj", "{4C247F20-E20D-44E9-9B47-7FD990E70DB2}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{458C176C-7276-40C4-8BFE-FDF116427895}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{458C176C-7276-40C4-8BFE-FDF116427895}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{458C176C-7276-40C4-8BFE-FDF116427895}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4C247F20-E20D-44E9-9B47-7FD990E70DB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C247F20-E20D-44E9-9B47-7FD990E70DB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4C247F20-E20D-44E9-9B47-7FD990E70DB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4C247F20-E20D-44E9-9B47-7FD990E70DB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

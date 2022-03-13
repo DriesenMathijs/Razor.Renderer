@@ -41,10 +41,14 @@ namespace Razor.Renderer.Core.Logic
         {
             var services = ServiceCollection;
 
+            // Setup some variables we need to make the razor engine work
             var assembliesBaseDirectory = AppContext.BaseDirectory;
             var mainExecutableDirectory = GetMainExecutableDirectory();
             var webRootDirectory = GetWebRootDirectory(assembliesBaseDirectory);
             var fileProvider = new PhysicalFileProvider(assembliesBaseDirectory);
+            
+            // Initiate the VirtualFileProvider to render templates during runtime
+            var virtualFileProvider = new VirtualFileProvider();
 
             services.TryAddSingleton<IWebHostEnvironment>(new HostingEnvironment
             {
@@ -61,7 +65,15 @@ namespace Razor.Renderer.Core.Logic
             services.AddLogging();
             services.AddHttpContextAccessor();
 
-            var builder = services.AddMvcCore().AddRazorViewEngine();
+            // Add Mvc (for Razor-mvc syntax usage), RazorViewEngine (to render the views; both physical and runtime compiled)
+            // Add the VirtualFileProvider to fetch virtual files (runtime provided strings)
+            var builder = services.AddMvcCore()
+                                  .AddRazorViewEngine()
+                                  .AddRazorRuntimeCompilation(opt =>
+                                  {
+                                      opt.FileProviders.Clear();
+                                      opt.FileProviders.Add(virtualFileProvider);
+                                  });
 
             // Load view assembly application parts to find the view from shared libraries
             builder.ConfigureApplicationPartManager(manager =>
@@ -77,10 +89,12 @@ namespace Razor.Renderer.Core.Logic
                 }
             });
 
+            // so views in a Razor Class Library are included
             services.Configure<MvcRazorRuntimeCompilationOptions>(o =>
             {
                 o.FileProviders.Add(fileProvider);
             });
+
             services.TryAddTransient<RazorRendererLogic>();
 
             return services.BuildServiceProvider().GetRequiredService<IServiceScopeFactory>();

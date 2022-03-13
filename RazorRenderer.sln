@@ -5,9 +5,9 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Razor.Renderer.Core", "Razor.Renderer.Core\Razor.Renderer.Core.csproj", "{D34314D6-CB77-4E0A-9FCA-3DEA9280F4D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Razor.Renderer.Templates", "Example.Razor.Renderer.Templates\Example.Razor.Renderer.Templates.csproj", "{0834EB5D-B586-48A7-A99A-478C34DFB7E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Razor.Renderer.Templates", "Example.Razor.Renderer.Templates\Example.Razor.Renderer.Templates.csproj", "{0834EB5D-B586-48A7-A99A-478C34DFB7E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Razor.Renderer.Console", "Example.Razor.Renderer.Console\Example.Razor.Renderer.Console.csproj", "{458C176C-7276-40C4-8BFE-FDF116427895}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Razor.Renderer.Console", "Example.Razor.Renderer.Console\Example.Razor.Renderer.Console.csproj", "{458C176C-7276-40C4-8BFE-FDF116427895}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

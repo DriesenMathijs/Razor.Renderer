@@ -88,6 +88,6 @@ namespace Razor.Renderer.Core.Logic
                 var renderer = serviceScope.ServiceProvider.GetRequiredService<RazorRendererLogic>();
                 return await renderer.RenderViewAsync<object>(viewName, null, viewDataDictionary).ConfigureAwait(false);
             }
-        }
+        }        
     }
 }

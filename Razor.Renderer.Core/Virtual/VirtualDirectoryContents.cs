@@ -12,9 +12,9 @@ namespace Razor.Renderer.Core.Virtual
 
         public IEnumerator<IFileInfo> GetEnumerator()
         {
-            yield return TestFile.Value;
-            yield return ModelFile.Value;
-            yield return Text.Value;
+            yield return Layout.Value;
+            yield return ViewStart.Value;
+            yield return Template.Value;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -22,28 +22,17 @@ namespace Razor.Renderer.Core.Virtual
             return GetEnumerator();
         }
 
-        public static Lazy<IFileInfo> Text {get;set;}
+        public static Lazy<IFileInfo> Template {get;set;}
 
-        public static Lazy<IFileInfo> TestFile { get; } =
-                    new Lazy<IFileInfo>(() => new VirtualFileInfo("custom:\\testapp\\test.cshtml",
-                                                                  "test.cshtml",
-                                                                  DateTimeOffset.Now,
-                                                                  false,
-                                                                  (info) => Encoding.Default.GetBytes("@(System.DateTime.Now)")));
+        public static Lazy<IFileInfo> ViewStart { get; } =
+                    new Lazy<IFileInfo>(() => new VirtualFileInfo("/Views/_ViewStart.cshtml",
+                                                                  "_ViewStart.cshtml",
+                                                                  (info) => Encoding.Default.GetBytes("@{ Layout = \"_Layout\"; }")));
 
-
-        public static Lazy<IFileInfo> ModelFile { get; } =
-            new Lazy<IFileInfo>(() => new VirtualFileInfo("custom:\\testapp\\model.cshtml",
-                                                          "model.cshtml",
-                                                          DateTimeOffset.Now,
-                                                          false,
-                                                          (info) => Encoding.Default.GetBytes(@"@model Razor.Renderer.Core.Virtual.TestModel
-@foreach (var item in Model.Values)
-{
-<TEXT>@item
-</TEXT>
-}
-")));
+        public static Lazy<IFileInfo> Layout { get; } =
+            new Lazy<IFileInfo>(() => new VirtualFileInfo("/Views/Shared/_Layout.cshtml",
+                                                          "_Layout.cshtml",
+                                                          (info) => Encoding.Default.GetBytes("<!DOCTYPE html> <html> <head> <meta name=\"viewport\" content=\"width = device - width\" /> <title>@ViewBag.Title</title> </head> <body> <div> @RenderBody() </div> </body> </html>")));
 
     }
 }

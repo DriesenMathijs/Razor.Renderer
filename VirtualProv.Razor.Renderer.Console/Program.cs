@@ -19,13 +19,11 @@ namespace VirtualProv.Razor.Renderer.Console
 
             try
             {
-                VirtualDirectoryContents.Text = new Lazy<IFileInfo>(() => new VirtualFileInfo("custom:\\testappss\\testss.cshtml",
-                                                                  "testss.cshtml",
-                                                                  DateTimeOffset.Now,
-                                                                  false,
-                                                                  (info) => Encoding.Default.GetBytes("text injecting in program.cs")));
+                VirtualDirectoryContents.Template = new Lazy<IFileInfo>(() => new VirtualFileInfo(@"Views/templates/mailTemplate.cshtml",
+                                                                  "mailTemplate.cshtml",
+                                                                  (info) => Encoding.Default.GetBytes(@"<h1>rendered body</h1>")));
 
-                var rendered = await razorRunner.Render("custom:\\testappss\\testss.cshtml");
+                var rendered = await razorRunner.Render(@"Views/templates/mailTemplate.cshtml");
                 System.Console.WriteLine(rendered);
 
                 //var rendered = await razorRunner.Render("custom:\\testapp\\test.cshtml");

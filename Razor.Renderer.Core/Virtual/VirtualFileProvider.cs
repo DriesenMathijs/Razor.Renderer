@@ -14,14 +14,13 @@ namespace Razor.Renderer.Core.Virtual
         public IFileInfo GetFileInfo(string subpath)
         {
             switch (subpath.ToLower())
-            {
-
-                case "/custom:/testapp/test.cshtml":
-                    return VirtualDirectoryContents.TestFile.Value;
-                case "/custom:/testapp/model.cshtml":
-                    return VirtualDirectoryContents.ModelFile.Value;
-                case "/custom:/testappss/testss.cshtml":
-                    return VirtualDirectoryContents.Text.Value;
+            {               
+                case "/views/_viewstart.cshtml":
+                    return VirtualDirectoryContents.ViewStart.Value;
+                case "/views/shared/_layout.cshtml":
+                    return VirtualDirectoryContents.Layout.Value;
+                case "/views/templates/mailtemplate.cshtml":
+                    return VirtualDirectoryContents.Template.Value;
                 default:
                     return new NotFoundFileInfo(subpath);
             }

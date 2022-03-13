@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.FileProviders;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Razor.Renderer.Core.Virtual
 {
@@ -24,13 +22,13 @@ namespace Razor.Renderer.Core.Virtual
 
         public Stream CreateReadStream() => new MemoryStream(Contents.Value);
 
-        public VirtualFileInfo(string physicalPath, string name, DateTimeOffset lastModified, bool isDirectory, Func<IFileInfo, byte[]> getContents)
+        public VirtualFileInfo(string physicalPath, string name, Func<IFileInfo, byte[]> getContents)
         {
             Contents = new Lazy<byte[]>(() => getContents(this));
             PhysicalPath = physicalPath;
             Name = name;
-            LastModified = lastModified;
-            IsDirectory = isDirectory;
+            LastModified = DateTimeOffset.Now;
+            IsDirectory = false;
         }
     }
 }
